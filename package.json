@@ -1,6 +1,6 @@
 {
   "name": "multiplanetary-data",
-  "version": "0.1.0-pre",
+  "version": "0.2.0-pre",
   "description": "Data on progress towards a Multiplanetary Society",
   "main": "index.js",
   "scripts": {

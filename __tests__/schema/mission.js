@@ -21,10 +21,48 @@ missionsPaths.forEach((missionPath) => {
   test(`${missionPathProject}: formatting`, t => {
     // FIXME: do this async, but the ava way (full ES2017)
     const missionDataRaw = fs.readFileSync(missionPath);
+
+    // parse here to give the user some information on where the error is
+    let missionData;
+    try {
+      missionData = JSON.parse(missionDataRaw);
+    } catch (jsonParseError) {
+      if (!(jsonParseError instanceof SyntaxError)) {
+        throw jsonParseError;
+      }
+
+      const positionMatch = /at position (\d*)/.exec(jsonParseError.message);
+
+      if (!positionMatch) {
+        throw jsonParseError;
+      }
+
+      const position = parseInt(positionMatch[1], 10);
+
+      // could be nicer to memory by using the buffer data directly
+      const lines = missionDataRaw
+        .slice(0, position)
+        .toString()
+        .split(/(?:\n|\r)/);
+        // .filter(Boolean);
+      const lineCount = lines.length;
+      const lastLine = lines.pop();
+      const charCount = lastLine.length;
+
+      let offset = 5;
+      let rawJsonSegment;
+      do {
+        rawJsonSegment = `${missionDataRaw.slice(position - offset, position)}»${missionDataRaw.slice(position, position + 1)}«${missionDataRaw.slice(position + 1, position + offset)}`;
+        offset += 5;
+      } while (rawJsonSegment.replace(/\s/g,'').length < 50 && (offset * 2 <= missionDataRaw.length))
+
+      throw new SyntaxError(`${jsonParseError.message} (line ${lineCount} char ${charCount})\n…${rawJsonSegment}…`);
+    }
+
     t.is(
       missionDataRaw.toString(),
       `${JSON.stringify(
-        JSON.parse(missionDataRaw),
+        missionData,
         null,
         2
       )}\n`

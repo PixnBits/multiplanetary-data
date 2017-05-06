@@ -16,15 +16,24 @@ glob(
 
     jsonFilePaths.forEach((jsonFilePath) => {
       fs.readFile(jsonFilePath, (readFileErr, jsonFileRaw) => {
+        var data;
+
+        try {
+          data = `${JSON.stringify(
+            JSON.parse(jsonFileRaw),
+            null,
+            2
+          )}\n`;
+        } catch (jsonError) {
+          console.error(`error parsing/serializing JSON for ${jsonFilePath} (${jsonError.message})`);
+          return;
+        }
+
         console.log(`formatting and writing ${jsonFilePath.replace(rootPath, '')}`);
 
         fs.writeFile(
           jsonFilePath,
-          `${JSON.stringify(
-            JSON.parse(jsonFileRaw),
-            null,
-            2
-          )}\n`
+          data
         );
       });
     });

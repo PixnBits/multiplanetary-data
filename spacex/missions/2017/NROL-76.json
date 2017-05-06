@@ -1,88 +1,87 @@
 {
+  "sources": [
+    "http://www.spacex.com/sites/spacex/files/nrol76presskit.pdf",
+    "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/",
+    "https://forum.nasaspaceflight.com/index.php?topic=42639.msg1672675#msg1672675"
+  ],
   "patches": [
     {
-      "href": "https://i.imgur.com/fVHKJiX.png",
-      "sources": [
-        "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/"
-      ]
+      "vendor": "SpaceX",
+      "href": "https://i.imgur.com/fVHKJiX.png"
     },
     {
-      "href": "https://i.imgur.com/0kSaUYL.png",
-      "sources": [
-        "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/"
-      ]
+      "vendor": "NRO",
+      "href": "https://i.imgur.com/0kSaUYL.png"
     }
   ],
-  "launches": [
+  "hardware": [
     {
-      "hardware": {
-        "S1": {
-          "id": "B1032",
-          "sources": [
-            "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/"
-          ]
-        },
-        "S2": {},
-        "fairings": [],
-        "payloads": [
-          {
-            "customer": {
-              "name": "NRO",
-              "sources": [
-                "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/"
-              ]
-            },
-            "type": "classified"
-          }
-        ]
+      "type": "booster",
+      "vendor": "SpaceX",
+      "name": "stage-1",
+      "id": "B1032"
+    },
+    {
+      "type": "payload",
+      "vendor": "NRO",
+      "discipline": "classified",
+      "id": "USA 276",
+      "NSSDCA": "2017-022A"
+    }
+  ],
+  "plan": {
+    "orbit": "LEO",
+    "schedule": {
+      "-PT1H13M": "Launch Conductor takes launch readiness poll",
+      "-PT1H10M": "RP-1 (rocket grade kerosene) loading underway",
+      "-PT45M": "LOX (liquid oxygen) loading underway",
+      "-PT7M": "Falcon 9 begins engine chill prior to launch",
+      "-PT2M": "Range Control Officer (USAF) verifies range is go for 1st stage return",
+      "-PT1M30S": "SpaceX Launch Director verifies go for launch",
+      "-PT1M": [
+        "Flight computer commanded to begin final prelaunch checks",
+        "Propellant tank pressurization to flight pressure begins"
+      ],
+      "-PT3S": "Engine controller commands engine ignition sequence to start",
+      "PT0S": "Falcon 9 liftoff",
+      "PT1M8S": "Max Q (moment of peak mechanical stress on the rocket)",
+      "PT2M17S": "1st stage engine shutdown/main engine cutoff (MECO)",
+      "PT2M20S": "1st and 2nd stages separate",
+      "PT2M28S": "Second stage engine starts",
+      "PT2M48S": "Fairing deploy",
+      "PT7M9S": "1st stage entry burn begins",
+      "PT8M46S": "1st stage landing"
+    }
+  },
+  "events": [
+    {
+      "type": "launch",
+      "window": {
+        "opens": "2017-04-30T11:00:00Z",
+        "duration": "PT2H"
       },
-      "attempts": [
-        {
-          "window": {
-            "opens": "2017-04-30T11:00:00Z",
-            "closes": "2017-04-30",
-            "sources": [
-              "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/"
-            ]
-          },
-          "departure": {
-            "name": "LC39-A",
-            "pad": "39A",
-            "href": "TODO: URL to 39A that has details like lat-long",
-            "sources": [
-              "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/"
-            ]
-          },
-          "result": {
-            "type": "scrub",
-            "when": "2017-04-30T10:59:08Z",
-            "reason": "sensor (TOTO)",
-            "description": "Faulty redundant TOTO (Temperature Ox Tank Outlet) sensor",
-            "sources": [
-              "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/",
-              "https://forum.nasaspaceflight.com/index.php?topic=42639.msg1672675#msg1672675"
-            ]
-          },
-          "events": []
-        },
-        {
-          "window": {
-            "opens": "2017-05-01T11:00:00Z",
-            "closes": "2017-05-01T13:00:00Z",
-            "sources": [
-              "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/"
-            ]
-          },
-          "departure": {
-            "complex": "",
-            "pad": "39A",
-            "href": "TODO: URL to 39A that has details like lat-long",
-            "sources": [
-              "https://www.reddit.com/r/spacex/comments/68bn8y/welcome_to_the_rspacex_nrol76_official_launch/"
-            ]
-          }
-        }
-      ]
+      "location": {
+        "pad": "LC39-A"
+      },
+      "result": {
+        "type": "scrub",
+        "reason": "sensor (TOTO)",
+        "description": "Faulty redundant TOTO (Temperature Ox Tank Outlet) sensor"
+      }
+    },
+    {
+      "type": "launch",
+      "window": {
+        "opens": "2017-05-01T11:00:00Z",
+        "duration": "PT2H"
+      },
+      "location": {
+        "campus": "LC-39",
+        "pad": "39A"
+      },
+      "result": {
+        "type": "success"
+      }
     }
   ]
 }
