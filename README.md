@@ -23,4 +23,4 @@ $ npm test
 ```
 
 ## Attribution
-IDK, be kind, rewind? But I would like to know if this project has been helpful to you: open an issue to add your project to a list here, and be sure to check out [r/spacex](https://reddit.com/r/spacex/) and [r/spacexlounge](https://reddit.com/r/spacexlounge).
+IDK, be kind, rewind? But I would like to know if this project has been helpful to you: [open an issue](https://github.com/PixnBits/multiplanetary-data/issues/new) to add your project to a list here, and be sure to check out [r/spacex](https://reddit.com/r/spacex/) and [r/spacexlounge](https://reddit.com/r/spacexlounge).
