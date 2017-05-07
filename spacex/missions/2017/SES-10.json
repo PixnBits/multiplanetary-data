@@ -1,0 +1,91 @@
+{
+  "sources": [
+    "https://www.reddit.com/r/spacex/comments/5sjrzj/ses10_launch_campaign_thread/",
+    "http://www.spacex.com/sites/spacex/files/finalses10presskit.pdf"
+  ],
+  "patches": [
+    {
+      "vendor": "SpaceX",
+      "href": "http://i.imgur.com/6rSFPcW.png"
+    }
+  ],
+  "hardware": [
+    {
+      "type": "booster",
+      "vendor": "SpaceX",
+      "name": "stage-1",
+      "id": "B1021-2"
+    },
+    {
+      "type": "booster",
+      "vendor": "SpaceX",
+      "name": "stage-2",
+      "id": "2017-017B"
+    },
+    {
+      "type": "payload",
+      "vendor": "SES",
+      "discipline": "communications",
+      "id": "USA 276",
+      "NSSDCA": "2017-017A"
+    }
+  ],
+  "plan": {
+    "orbit": "GEO",
+    "windows": [
+      {
+        "type": "primary",
+        "start": "2017-03-30T22:27:00Z"
+      },
+      {
+        "type": "backup",
+        "start": "2017-04-01T22:27:00Z"
+      }
+    ],
+    "schedule": {
+      "-P1H18M": "Launch Conductor takes launch readiness poll",
+      "-P1H10M": "RP-1 (rocket grade kerosene) loading underway",
+      "-P45M": "LOX (liquid oxygen) loading underway",
+      "-P7M": "Falcon 9 begins engine chill prior to launch",
+      "-P2M": "Range Control Officer (USAF) verifies range is go for launch",
+      "-P1M30S": "SpaceX Launch Director verifies go for launch",
+      "-P1M": [
+        "Flight computer commanded to begin final prelaunch checks",
+        "Propellant tank pressurization to flight pressure begins"
+      ],
+      "-PM3S": "Engine controller commands engine ignition sequence to start",
+      "P0S": "Falcon 9 liftoff",
+      "P1M22S": "Max Q (moment of peak mechanical stress on the rocket)",
+      "P2M38S": "1st stage engine shutdown/main engine cutoff (MECO)",
+      "P2M41S": "1st and 2nd stages separate",
+      "P2M49S": "Second stage engine starts",
+      "P3M49S": "Fairing deploy",
+      "P6M19S": "1st stage entry burn begins",
+      "P8M32S": "1st stage landing",
+      "P8M34S": "2nd stage engine cutoff (SECO-1)",
+      "P26M29S": "2nd stage engine restarts",
+      "P27M22S": "2nd stage engine cutoff (SECO-2)",
+      "P32M3S": "SES-10 satellite deploy"
+    }
+  },
+  "events": [
+    {
+      "type": "launch",
+      "location": {
+        "campus": "LC-39",
+        "pad": "39A"
+      },
+      "result": {
+        "type": "success"
+      }
+    },
+    {
+      "type": "land",
+      "hardwareName": "stage-1",
+      "pad": "OCISLY",
+      "result": {
+        "type": "success"
+      }
+    }
+  ]
+}

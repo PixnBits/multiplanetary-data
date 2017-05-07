@@ -49,6 +49,10 @@
               },
               "id": {
                 "type": "string"
+              },
+              "mass": {
+                "type": "number",
+                "unit": "kg"
               }
             }
           },
@@ -66,12 +70,86 @@
         ]
       }
     },
+    "plan": {
+      "type": "object",
+      "properties": {
+        "orbit": {
+          "type": "string",
+          "enum": [
+            "LEO",
+            "GEO"
+          ]
+        },
+        "windows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "primary",
+                  "backup"
+                ]
+              },
+              "start": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "schedule": {
+          "type": "object",
+          "TODO": "parse keys as valid durations"
+        }
+      }
+    },
     "events": {
       "type": "array",
       "items": {
         "properties": {
           "type": {
             "type": "string"
+          },
+          "result": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "when": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "oneOf": [
+              {
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "scrub"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "success",
+                      "failure"
+                    ]
+                  }
+                }
+              }
+            ]
           }
         },
         "oneOf": [
@@ -114,44 +192,6 @@
                     "format": "uri"
                   }
                 }
-              },
-              "result": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string"
-                  },
-                  "when": {
-                    "type": "string",
-                    "format": "date-time"
-                  }
-                },
-                "oneOf": [
-                  {
-                    "properties": {
-                      "type": {
-                        "enum": [
-                          "scrub"
-                        ]
-                      },
-                      "reason": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  {
-                    "properties": {
-                      "type": {
-                        "enum": [
-                          "success"
-                        ]
-                      }
-                    }
-                  }
-                ]
               }
             }
           },
@@ -174,6 +214,23 @@
                 "enum": [
                   "payload"
                 ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "land"
+                ]
+              },
+              "hardwareName": {
+                "type": "string"
+              },
+              "pad": {
+                "type": "string"
               }
             }
           }
