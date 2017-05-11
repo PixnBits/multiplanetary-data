@@ -6,7 +6,8 @@
   "scripts": {
     "format-json": "node ./bin/format-json.js",
     "test": "ava",
-    "test:debug": "node --inspect node_modules/ava/profile.js"
+    "test:debug": "node --inspect node_modules/ava/profile.js",
+    "githook:pre-commit": "npm run test"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "ajv": "^5.0.1",
     "ava": "^0.19.1",
+    "githook-scripts": "^1.0.0",
     "glob": "^7.1.1"
   }
 }
