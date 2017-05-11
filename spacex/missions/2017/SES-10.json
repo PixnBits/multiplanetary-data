@@ -31,7 +31,7 @@
     }
   ],
   "plan": {
-    "orbit": "GEO",
+    "orbit": "GTO",
     "windows": [
       {
         "type": "primary",

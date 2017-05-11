@@ -77,7 +77,7 @@
           "type": "string",
           "enum": [
             "LEO",
-            "GEO"
+            "GTO"
           ]
         },
         "windows": {
